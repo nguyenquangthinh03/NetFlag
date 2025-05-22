@@ -1,0 +1,144 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+    id 'com.google.devtools.ksp'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    compileSdk 35
+    namespace "project.dheeraj.netflag"
+
+    defaultConfig {
+        applicationId "project.dheeraj.netflag"
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        compose true
+        viewBinding true
+        dataBinding true
+        buildConfig true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.14"
+    }
+}
+
+dependencies {
+    // Kotlin stdlib
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.24"
+
+    // AndroidX Core & UI
+    implementation 'androidx.core:core-ktx:1.15.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+
+    // Coroutines (compatible with Kotlin 1.9)
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1'
+
+    // Architecture Components
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
+
+    // Room Database
+    implementation 'androidx.room:room-runtime:2.6.1'
+
+    ksp           'androidx.room:room-compiler:2.6.1'
+    implementation 'androidx.room:room-ktx:2.6.1'
+
+    // Firebase (BOM for version alignment)
+    implementation platform('com.google.firebase:firebase-bom:32.1.0')
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
+    // Credentials (AndroidX)
+    implementation 'androidx.credentials:credentials:1.5.0'
+    implementation 'androidx.credentials:credentials-play-services-auth:1.5.0'
+
+    // Google Identity (Java-only)
+    implementation 'com.google.android.libraries.identity.googleid:googleid:1.1.1'
+
+    // Legacy Support
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // Coil (Image Loading)
+    implementation 'io.coil-kt:coil:2.7.0'
+
+    // Retrofit & Moshi
+    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.11.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.15.0'
+    ksp           'com.squareup.moshi:moshi-kotlin-codegen:1.15.0'
+
+    // Hilt + Dagger
+    implementation "com.google.dagger:hilt-android:2.51.1"
+    ksp           'com.google.dagger:hilt-android-compiler:2.51.1'
+
+    // Navigation Components
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.9'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.8.9'
+
+    // Paging
+    implementation 'androidx.paging:paging-runtime-ktx:3.3.6'
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // Skeleton View
+    implementation 'com.faltenreich:skeletonlayout:5.0.0'
+
+    // YouTube Player
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1'
+
+    // Glide (with annotationProcessor for compiler)
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+
+    // Circle Image View
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // View Pager 2
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    //gemini
+    implementation 'com.google.ai.client.generativeai:generativeai:0.4.0'
+    //compose
+    implementation platform('androidx.compose:compose-bom:2024.05.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.foundation:foundation'
+    implementation 'androidx.compose.material3:material3'
+    implementation 'androidx.activity:activity-compose:1.9.0' // Khớp với BOM
+}
